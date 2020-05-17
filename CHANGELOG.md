@@ -51,6 +51,7 @@
 
 ## Changes since v5.1.1
 
+- [#560](https://github.com/oauth2-proxy/oauth2-proxy/pull/560) Fallback to UserInfo is User ID claim not present (@JoelSpeed)
 - [#574](https://github.com/oauth2-proxy/oauth2-proxy/pull/574) render error page on 502 proxy status (@amnay-mo)
 - [#559](https://github.com/oauth2-proxy/oauth2-proxy/pull/559) Rename cookie-domain config to cookie-domains (@JoelSpeed)
 - [#569](https://github.com/oauth2-proxy/oauth2-proxy/pull/569) Updated autocompletion for `--` long options. (@Izzette)
