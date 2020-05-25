@@ -44,3 +44,27 @@ func (p *ProviderData) GetClientSecret() (clientSecret string, err error) {
 	}
 	return string(fileClientSecret), nil
 }
+
+func (p *ProviderData) setProviderDefaults(name string, defaultLoginURL, defaultRedeemURL, defaultProfileURL, defaultValidateURL *url.URL, defaultScope string) {
+	p.ProviderName = name
+	setURLDefault(&p.LoginURL, defaultLoginURL)
+	setURLDefault(&p.RedeemURL, defaultRedeemURL)
+	setURLDefault(&p.ProfileURL, defaultProfileURL)
+	setURLDefault(&p.ValidateURL, defaultValidateURL)
+
+	if p.Scope == "" {
+		p.Scope = defaultScope
+	}
+}
+
+// setURLDefault will set the url to the default given if it is empty or nil.
+// If the provided default is nil, it will populate it with an empty URL to make sure it is not nil.
+func setURLDefault(u **url.URL, d *url.URL) {
+	if *u == nil || (*u).String() == "" {
+		if d != nil {
+			*u = d
+		} else {
+			*u = &url.URL{}
+		}
+	}
+}
