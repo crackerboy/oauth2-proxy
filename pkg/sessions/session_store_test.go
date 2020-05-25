@@ -29,7 +29,7 @@ func TestSessionStore(t *testing.T) {
 
 var _ = Describe("NewSessionStore", func() {
 	var opts *options.SessionOptions
-	var cookieOpts *options.CookieOptions
+	var cookieOpts *options.Cookie
 
 	var request *http.Request
 	var response *httptest.ResponseRecorder
@@ -339,7 +339,7 @@ var _ = Describe("NewSessionStore", func() {
 
 		Context("with non-default options", func() {
 			BeforeEach(func() {
-				cookieOpts = &options.CookieOptions{
+				cookieOpts = &options.Cookie{
 					Name:     "_cookie_name",
 					Path:     "/path",
 					Expire:   time.Duration(72) * time.Hour,
@@ -382,7 +382,7 @@ var _ = Describe("NewSessionStore", func() {
 		opts = &options.SessionOptions{}
 
 		// Set default options in CookieOptions
-		cookieOpts = &options.CookieOptions{
+		cookieOpts = &options.Cookie{
 			Name:     "_oauth2_proxy",
 			Path:     "/",
 			Expire:   time.Duration(168) * time.Hour,
